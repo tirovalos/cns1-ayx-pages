@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ayx · 资料整理与信息索引</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans SC", "Helvetica Neue", sans-serif;
+      background-color: #f4f6f9;
+      color: #2c3e50;
+      line-height: 1.7;
+      padding: 2rem 1.5rem;
+    }
+
+    .container {
+      max-width: 920px;
+      margin: 0 auto;
+    }
+
+    /* 主卡片区 带柔和阴影 */
+    section, .card-block {
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 2rem 2.2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04), 0 1px 4px rgba(0, 0, 0, 0.02);
+      border: 1px solid #eaeef2;
+    }
+
+    /* hero 区块 不另用大图，文字为主 */
+    .hero {
+      text-align: left;
+      padding: 2.5rem 2.2rem 2rem;
+      background: #ffffff;
+    }
+
+    .hero h1 {
+      font-size: 2.2rem;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      color: #1f2937;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero p {
+      font-size: 1.05rem;
+      color: #4b5563;
+      max-width: 70%;
+      margin-top: 0.6rem;
+    }
+
+    /* 章节标题 */
+    .section-title {
+      font-size: 1.3rem;
+      font-weight: 550;
+      margin-bottom: 1.2rem;
+      padding-bottom: 0.4rem;
+      border-bottom: 2px solid #e2e8f0;
+      display: inline-block;
+      color: #1e293b;
+    }
+
+    .highlight-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.6rem;
+      margin-top: 0.8rem;
+    }
+
+    .highlight-item {
+      flex: 1 1 160px;
+      background: #f8fafc;
+      border: 1px solid #dee4ea;
+      border-radius: 12px;
+      padding: 1rem 1.2rem;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+      transition: box-shadow 0.2s;
+    }
+
+    .highlight-item:hover {
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    }
+
+    .highlight-item h4 {
+      font-size: 1rem;
+      font-weight: 550;
+      margin-bottom: 0.3rem;
+      color: #1f2937;
+    }
+
+    .highlight-item p {
+      font-size: 0.9rem;
+      color: #4b5563;
+    }
+
+    .usage-tips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      margin-top: 0.4rem;
+    }
+
+    .tip {
+      background: #f9fafb;
+      border-left: 4px solid #8395a7;
+      padding: 1rem 1.2rem;
+      flex: 1 1 200px;
+      border-radius: 0 10px 10px 0;
+      border: 1px solid #e9edf2;
+      border-left-width: 4px;
+    }
+
+    .tip strong {
+      display: block;
+      font-weight: 550;
+      color: #1e293b;
+      margin-bottom: 0.2rem;
+    }
+
+    .tip span {
+      font-size: 0.92rem;
+      color: #475569;
+    }
+
+    .faq-short {
+      list-style: none;
+    }
+
+    .faq-short li {
+      margin-bottom: 0.8rem;
+      padding: 0.6rem 0.8rem;
+      background: #f8fafc;
+      border-radius: 8px;
+      border: 1px solid #e4e9ef;
+    }
+
+    .faq-short li strong {
+      display: inline-block;
+      margin-right: 0.5rem;
+      color: #1f2937;
+    }
+
+    .notice {
+      background: #f2f5f9;
+      border: 1px dashed #b8c5d4;
+      border-radius: 12px;
+      padding: 1.2rem 1.8rem;
+      font-size: 0.92rem;
+      color: #334155;
+    }
+
+    .notice a {
+      color: #2c3e50;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      text-decoration-thickness: 1px;
+      text-decoration-color: #9aa9b8;
+      font-weight: 450;
+    }
+
+    .notice a:hover {
+      color: #1f2937;
+      text-decoration-color: #2c3e50;
+    }
+
+    .footer-note {
+      font-size: 0.8rem;
+      color: #7f8c9b;
+      border-top: 1px solid #dfe5ec;
+      padding-top: 1.2rem;
+      margin-top: 0.8rem;
+      text-align: left;
+    }
+
+    /* 响应式 */
+    @media (max-width: 600px) {
+      body {
+        padding: 1.2rem 1rem;
+      }
+      section, .card-block {
+        padding: 1.5rem 1.2rem;
+      }
+      .hero h1 {
+        font-size: 1.6rem;
+      }
+      .hero p {
+        max-width: 100%;
+      }
+      .highlight-grid {
+        flex-direction: column;
+      }
+      .usage-tips {
+        flex-direction: column;
+      }
+      .highlight-item {
+        flex: 1 1 auto;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <!-- hero 区域：摘要 -->
+  <div class="hero card-block">
+    <h1>资料整理从索引开始</h1>
+    <p>无论是工作笔记、兴趣收藏或是日常查阅，<a href="https://cns1-ayx.com" style="color: #1f2937; text-decoration: underline; text-underline-offset: 2px;">ayx</a> 一直担任着信息聚合与快速定位的中转角色。没有花哨的包装，只做一件事——把散落的内容梳理成可循的路径。</p>
+  </div>
+
+  <!-- 亮点卡片 -->
+  <section>
+    <div class="section-title">🌿 为什么用它整理信息</div>
+    <div class="highlight-grid">
+      <div class="highlight-item">
+        <h4>轻量索引</h4>
+        <p>不需要复杂数据库，像给纸质书贴标签一样，按主题归拢链接与摘要。</p>
+      </div>
+      <div class="highlight-item">
+        <h4>结构优先</h4>
+        <p>每个条目都有对应的归类层级，从大类到子项，减少反复查找的消耗。</p>
+      </div>
+      <div class="highlight-item">
+        <h4>零干扰界面</h4>
+        <p>减少视觉负担，把注意力集中在内容本身，而非按钮或动画。</p>
+      </div>
+      <div class="highlight-item">
+        <h4>跨设备同步</h4>
+        <p>在线保存的资料夹，在家、办公室或者路上都能打开同一份整理结果。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 使用建议 / 场景 -->
+  <section>
+    <div class="section-title">📌 适合的整理场景</div>
+    <div class="usage-tips">
+      <div class="tip">
+        <strong>📚 阅读与笔记</strong>
+        <span>把不同网页、文档的要点汇总到一处，用短标题和链接关联原文，方便后续回顾。</span>
+      </div>
+      <div class="tip">
+        <strong>📎 项目资料夹</strong>
+        <span>按阶段或主题建立索引层，相关资源统一存放，分享给协作方时只需给一个地址。</span>
+      </div>
+      <div class="tip">
+        <strong>🏷 个人兴趣库</strong>
+        <span>食谱、旅行攻略、工具推荐…… 用分类代替浏览器的无限书签栏，找回东西更直接。</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ 摘要: 真实常见疑问 -->
+  <section>
+    <div class="section-title">❓ 一些常见疑问</div>
+    <ul class="faq-short">
+      <li><strong>需要注册吗？</strong> 大部分浏览功能不需要账号，部分整理功能建议登录以保存进度。</li>
+      <li><strong>资料会不会丢失？</strong> 服务器会做常规备份，但建议重要信息自己额外留底。</li>
+      <li><strong>能分享给别人吗？</strong> 可以复制链接，对方无需注册也能查看你公开的索引内容。</li>
+      <li><strong>有搜索功能吗？</strong> 支持按关键词搜索索引标题与备注，方便快速过滤。</li>
+    </ul>
+  </section>
+
+  <!-- 可信但克制的访问说明 -->
+  <section>
+    <div class="section-title">🧭 访问说明</div>
+    <div class="notice">
+      <p><a href="https://cns1-ayx.com">ayx</a> 是一个资料整理与索引站点，内容均由用户自行组织。访问时请遵循一般网络规范，不要上传违法违规信息。<br>
+      站点使用标准的 HTTPS 连接，日常浏览无需额外插件。如果在使用中遇到问题，可以查看站内帮助页或联系维护方。<br>
+      保持理性，索引只是工具，真正的知识来自你的阅读与思考。</p>
+    </div>
+    <div class="footer-note">
+      <span>本页仅作为服务介绍，不构成任何形式的承诺。信息索引力求客观，请自行判断内容价值。</span>
+    </div>
+  </section>
+
+</div>
+</body>
+</html>
